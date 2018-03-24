@@ -11,6 +11,30 @@ import static org.junit.Assert.assertEquals;
 public class DirectionTest {
 
     /**
+     * Checks if Direction will not be instantiated if value of coefficient is less than -1
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testBadCreationWithNegativeCoefficient() {
+        new Direction(Axis.X, -2);
+    }
+
+    /**
+     * Checks if the Direction will not be instantiated if the value of coefficient is 0
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testBadCreationWithZeroCoefficient() {
+        new Direction(Axis.X, 0);
+    }
+
+    /**
+     * Checks if the Direction will not be instantiated if the value of coefficient is greater than 1
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testBadCreationWithPositiveCoefficient() {
+        new Direction(Axis.X, 2);
+    }
+
+    /**
      * Checks if the equality logic of Direction is working
      */
     @Test
