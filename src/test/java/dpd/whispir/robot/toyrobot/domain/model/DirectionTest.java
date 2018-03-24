@@ -27,6 +27,17 @@ public class DirectionTest {
     }
 
     /**
+     * Checks if the toString() is working as expected
+     */
+    @Test
+    public void testStringCode() {
+        assertEquals("NORTH", Direction.NORTH.toString());
+        assertEquals("SOUTH", Direction.SOUTH.toString());
+        assertEquals("EAST", Direction.EAST.toString());
+        assertEquals("WEST", Direction.WEST.toString());
+    }
+
+    /**
      * Checks if the turn left logic is working
      */
     @Test

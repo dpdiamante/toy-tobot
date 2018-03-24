@@ -71,6 +71,20 @@ public class Direction {
         }
     }
 
+    @Override
+    public String toString() {
+
+        if (this.equals(NORTH)) {
+            return STR_NORTH;
+        } else if (this.equals(SOUTH)) {
+            return STR_SOUTH;
+        } else if (this.equals(EAST)) {
+            return STR_EAST;
+        } else {
+            return STR_WEST;
+        }
+    }
+
     public Axis getAxis() {
         return this.axis;
     }
