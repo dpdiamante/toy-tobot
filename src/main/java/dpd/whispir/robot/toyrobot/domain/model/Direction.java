@@ -17,6 +17,14 @@ public class Direction {
 
     public static final Direction WEST = new Direction(Axis.X, -1);
 
+    public static final String STR_NORTH = "NORTH";
+
+    public static final String STR_SOUTH = "SOUTH";
+
+    public static final String STR_EAST = "EAST";
+
+    public static final String STR_WEST = "WEST";
+
     private final Axis axis;
 
     private final int coefficient;
@@ -37,6 +45,30 @@ public class Direction {
 
         this.axis = axis;
         this.coefficient = coefficient;
+    }
+
+    /**
+     * Returns an instance of direction depending on the code argument
+     *
+     * @param code must be either 'NORTH', 'SOUTH', 'EAST' or 'WEST'
+     * @return An instance of Direction depending on the code argument.
+     */
+    public static Direction directionOf(String code) {
+
+        if (!(code.trim().equalsIgnoreCase(STR_NORTH) || code.trim().equalsIgnoreCase(STR_SOUTH)
+                || code.trim().equalsIgnoreCase(STR_EAST) || code.trim().equalsIgnoreCase(STR_WEST))) {
+            throw new IllegalArgumentException("Argument should be either 'NORTH', 'EAST', 'SOUTH' or 'WEST");
+        }
+
+        if (code.trim().equalsIgnoreCase(STR_NORTH)) {
+            return NORTH;
+        } else if (code.trim().equalsIgnoreCase(STR_SOUTH)){
+            return SOUTH;
+        } else if (code.trim().equalsIgnoreCase(STR_EAST)) {
+            return EAST;
+        } else {
+            return WEST;
+        }
     }
 
     public Axis getAxis() {

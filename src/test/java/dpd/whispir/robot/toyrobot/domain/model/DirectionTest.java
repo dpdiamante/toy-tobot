@@ -19,6 +19,11 @@ public class DirectionTest {
         assertEquals(Direction.EAST, new Direction(Axis.X, 1));
         assertEquals(Direction.SOUTH, new Direction(Axis.Y, -1));
         assertEquals(Direction.WEST, new Direction(Axis.X, -1));
+
+        assertEquals(Direction.NORTH, Direction.directionOf("NORTH"));
+        assertEquals(Direction.EAST, Direction.directionOf("EAST"));
+        assertEquals(Direction.SOUTH, Direction.directionOf("SOUTH"));
+        assertEquals(Direction.WEST, Direction.directionOf("WEST"));
     }
 
     /**
