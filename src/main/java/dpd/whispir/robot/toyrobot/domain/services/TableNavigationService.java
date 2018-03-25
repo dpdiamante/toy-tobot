@@ -1,5 +1,6 @@
 package dpd.whispir.robot.toyrobot.domain.services;
 
+import dpd.whispir.robot.toyrobot.domain.exceptions.LocationDoesNotExistsException;
 import dpd.whispir.robot.toyrobot.domain.exceptions.RobotOverboardException;
 import dpd.whispir.robot.toyrobot.domain.model.*;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * the robot does not fall out from the table.
  */
 @Component
-public class TableNavigationService {
+public class TableNavigationService implements TableNavigationServiceInterface {
 
     /**
      * Moves the robot where it is facing along the table
@@ -37,6 +38,23 @@ public class TableNavigationService {
 
         robot.move();
         return robot;
+    }
+
+    /**
+     * Initializes the robot for the given table
+     *
+     * @param table
+     * @param coordinates
+     * @param direction
+     * @return
+     */
+    public Robot initializeRobot(Table table, Coordinates coordinates, Direction direction) throws LocationDoesNotExistsException {
+
+        if (!table.coordinatesExists(coordinates)) {
+            throw new LocationDoesNotExistsException("Coordinates not applicable for the table");
+        }
+
+        return new Robot(coordinates, direction);
     }
 
 }

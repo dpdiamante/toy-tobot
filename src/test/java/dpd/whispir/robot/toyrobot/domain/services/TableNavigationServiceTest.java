@@ -1,5 +1,6 @@
 package dpd.whispir.robot.toyrobot.domain.services;
 
+import dpd.whispir.robot.toyrobot.domain.exceptions.LocationDoesNotExistsException;
 import dpd.whispir.robot.toyrobot.domain.exceptions.RobotOverboardException;
 import dpd.whispir.robot.toyrobot.domain.model.Coordinates;
 import dpd.whispir.robot.toyrobot.domain.model.Direction;
@@ -193,5 +194,21 @@ public class TableNavigationServiceTest {
         Robot updatedRobot = tableNavigationService.moveRobot(table, robot);
 
         assertEquals(new Coordinates(1,3), updatedRobot.getPosition());
+    }
+
+    @Test(expected = LocationDoesNotExistsException.class)
+    public void testInitializeRobotOnNonExistingLocation() throws LocationDoesNotExistsException {
+
+        tableNavigationService.initializeRobot(new Table(5,5), new Coordinates(5,6), Direction.NORTH);
+    }
+
+    @Test
+    public void testCorrectRobotInitialization() throws LocationDoesNotExistsException {
+
+        Robot robot = tableNavigationService
+                .initializeRobot(new Table(5,5), new Coordinates(3,2), Direction.NORTH);
+
+        assertEquals(new Coordinates(3,2), robot.getPosition());
+        assertEquals(Direction.NORTH, robot.getDirection());
     }
 }
