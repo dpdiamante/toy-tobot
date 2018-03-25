@@ -54,4 +54,14 @@ public class Robot {
 
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.position.getX()).append(",");
+        builder.append(this.position.getY()).append(",");
+        builder.append(this.direction.toString());
+
+        return builder.toString();
+    }
+
 }

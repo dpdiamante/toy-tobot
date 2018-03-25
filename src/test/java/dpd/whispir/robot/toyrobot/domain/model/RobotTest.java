@@ -22,4 +22,15 @@ public class RobotTest {
         assertEquals(new Coordinates(1,2), robot.getPosition());
     }
 
+    /**
+     * Tests how the toString() works for the Robot class
+     */
+    @Test
+    public void testStringRepresentation() {
+        Coordinates coordinates = new Coordinates(1,1);
+        Robot robot = new Robot(coordinates, Direction.NORTH);
+
+        assertEquals("1,1,NORTH", robot.toString());
+    }
+
 }
