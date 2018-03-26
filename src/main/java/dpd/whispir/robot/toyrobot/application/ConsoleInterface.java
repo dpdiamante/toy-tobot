@@ -33,6 +33,11 @@ public class ConsoleInterface implements UserInterfacePort {
         Command command;
         String line = in.readLine().toUpperCase().trim();
 
+        if (line.trim().toUpperCase().equals("Q")) {
+            in.close();
+            System.exit(0);
+        }
+
         if (line.startsWith("PLACE ")) {
             command = new Command("PLACE", line.substring(5).split(","));
         } else {
@@ -45,7 +50,7 @@ public class ConsoleInterface implements UserInterfacePort {
     public void runApplication() throws IOException {
         System.out.println();
         System.out.println("----------------------------------------");
-        System.out.println("           TOY ROBOT NAVIGATOR");
+        System.out.println("    TOY ROBOT NAVIGATOR (Q to Quit)");
         System.out.println("----------------------------------------");
         System.out.println();
 
